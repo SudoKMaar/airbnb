@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Button from "@/components/Button";
+import Button from "@/components/button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -77,12 +77,16 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="flex flex-row items-center gap-4 w-full">
                   {secondaryAction && secondaryActionLabel && (
                     <Button
-                      disabled
+                      disabled={disabled}
                       label={secondaryActionLabel}
                       onClick={handleSecondaryAction}
                     />
                   )}
-                  <Button disabled label={actionLabel} onClick={handleSubmit} />
+                  <Button
+                    disabled={disabled}
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                  />
                 </div>
               </div>
             </div>
