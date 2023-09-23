@@ -3,6 +3,7 @@ import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
+import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/hooks/useRegisterModal";
@@ -37,7 +38,7 @@ const RegisterModal = () => {
   };
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-1">
       <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
       <Input
         id="email"
@@ -69,19 +70,19 @@ const RegisterModal = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className="flex flex-col gap-1 mt-2">
       <hr />
       <Button
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div
         className="

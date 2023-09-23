@@ -4,12 +4,12 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import Avatar from "@/components/avatar";
 import MenuItem from "@/components/navbar/menuItem";
-import { User } from "@prisma/client";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
+import { SafeUser } from "@/types";
 
 interface UserMmenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMmenuProps> = ({ currentUser }) => {
@@ -34,7 +34,7 @@ const UserMenu: React.FC<UserMmenuProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
