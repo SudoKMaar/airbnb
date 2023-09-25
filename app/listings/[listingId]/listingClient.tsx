@@ -5,12 +5,12 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { differenceInDays, eachDayOfInterval } from "date-fns";
 import useLoginModal from "@/hooks/useLoginModal";
-import { SafeListing, SafeUser } from "@/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/types";
 import Container from "@/components/container";
 import { categories } from "@/components/navbar/categories";
 import ListingHead from "@/components/listings/listingHead";
 import ListingInfo from "@/components/listings/listingInfo";
-import { Reservation } from "@prisma/client";
+import ListingReservation from "@/components/listings/listingReservation";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -19,7 +19,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
