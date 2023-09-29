@@ -1,15 +1,15 @@
 import EmptyState from "@/components/emptyState";
 import getCurrentUser from "@/actions/getCurrentUser";
 import getReservations from "@/actions/getReservations";
-import ReservationsClient from "./ReservationsClient";
 import ClientOnly from "@/components/clientOnly";
-
+import TripsClient from "../trips/TripsClient";
 const ReservationsPage = async () => {
   const currentUser = await getCurrentUser();
+
   if (!currentUser) {
     return (
       <ClientOnly>
-        <EmptyState title="Unauthorized" subTitle="Please login" />;
+        <EmptyState title="Unauthorized" subTitle="Please login" />
       </ClientOnly>
     );
   }
@@ -24,12 +24,10 @@ const ReservationsPage = async () => {
       </ClientOnly>
     );
   }
+
   return (
     <ClientOnly>
-      <ReservationsClient
-        reservations={reservations}
-        currentUser={currentUser}
-      />
+      <TripsClient reservations={reservations} currentUser={currentUser} />
     </ClientOnly>
   );
 };
