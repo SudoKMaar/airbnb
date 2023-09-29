@@ -1,41 +1,27 @@
 import {
   GiBarn,
   GiBoatFishing,
+  GiCampingTent,
   GiCastle,
   GiCaveEntrance,
   GiFamilyHouse,
+  GiFarmTractor,
   GiForestCamp,
+  GiHabitatDome,
   GiIsland,
+  GiTreehouse,
+  GiWatchtower,
   GiWindmill,
   GiWoodCabin,
 } from "react-icons/gi";
 import { IoDiamond } from "react-icons/io5";
-import { MdApartment } from "react-icons/md";
+import { FiHome } from "react-icons/fi";
+import { FaHotel } from "react-icons/fa";
+import { MdApartment, MdHouseboat, MdLocalShipping } from "react-icons/md";
 import { usePathname, useSearchParams } from "next/navigation";
 import CategoryBox from "@/components/categoryBox";
-import BedBreakfast from "@/components/catgories/bed-breakfast";
-import CasaParticular from "@/components/catgories/casa-particular";
-import Yurt from "@/components/catgories/yurt";
-import Trullo from "@/components/catgories/trullo";
-import TreeHouse from "@/components/catgories/tree-house";
-import Tower from "@/components/catgories/tower";
-import TinyHome from "@/components/catgories/tiny-home";
-import Tent from "@/components/catgories/tent";
-import ShepherdHut from "@/components/catgories/shepherd-hut";
-import Ryokan from "@/components/catgories/ryokan";
-import Riad from "@/components/catgories/riad";
-import Minsu from "@/components/catgories/minsu";
-import Kezhan from "@/components/catgories/kezhan";
-import Houseboat from "@/components/catgories/houseboat";
-import Hotel from "@/components/catgories/hotel";
-import GuestHouse from "@/components/catgories/guest-house";
-import Farm from "@/components/catgories/farm";
-import EarthHome from "@/components/catgories/earth-home";
-import Dome from "@/components/catgories/dome";
-import Dammuso from "@/components/catgories/dammuso";
-import CycladicHome from "@/components/catgories/cycladic-home";
-import CatContainer from "@/components/catgories/container";
 import Container from "@/components/container";
+import { BiSolidBuilding } from "react-icons/bi";
 
 export const categories = [
   {
@@ -45,7 +31,7 @@ export const categories = [
       "A spacious and comfortable house, perfect for a family vacation.",
   },
   {
-    label: "Flat/apartment",
+    label: "Flat",
     icon: MdApartment,
     description:
       "A spacious and comfortable flat or apartment, perfect for a city break.",
@@ -54,12 +40,6 @@ export const categories = [
     label: "Barn",
     icon: GiBarn,
     description: "A rustic barn conversion, perfect for a country getaway.",
-  },
-  {
-    label: "Bed & breakfast",
-    icon: <BedBreakfast />,
-    description:
-      "A cozy bed and breakfast, where you can enjoy a delicious breakfast each morning.",
   },
   {
     label: "Boat",
@@ -72,15 +52,9 @@ export const categories = [
     description: "A cozy cabin in the woods, perfect for a relaxing escape.",
   },
   {
-    label: "Campervan/motorhome",
+    label: "Campervan",
     icon: GiForestCamp,
     description: "A campervan or motorhome, perfect for a road trip.",
-  },
-  {
-    label: "Casa particular",
-    icon: <CasaParticular />,
-    description:
-      "A homestay in Cuba, where you can experience the local culture.",
   },
   {
     label: "Castle",
@@ -94,52 +68,34 @@ export const categories = [
   },
   {
     label: "Container",
-    icon: <CatContainer />,
+    icon: MdLocalShipping,
     description:
       "A stay in a converted shipping container, for a modern and unique experience.",
   },
   {
-    label: "Cycladic home",
-    icon: <CycladicHome />,
-    description:
-      "A whitewashed Cycladic home, perfect for a Greek island getaway.",
-  },
-  {
-    label: "Dammuso",
-    icon: <Dammuso />,
-    description:
-      "A traditional Sicilian dammuso, perfect for a relaxing stay in the sun.",
-  },
-  {
     label: "Dome",
-    icon: <Dome />,
+    icon: GiHabitatDome,
     description: "A geodesic dome, for a unique and stylish stay.",
   },
   {
-    label: "Earth home",
-    icon: <EarthHome />,
-    description:
-      "A sustainable earth home, perfect for an eco-friendly getaway.",
-  },
-  {
     label: "Farm",
-    icon: <Farm />,
+    icon: GiFarmTractor,
     description:
       "A stay on a working farm, where you can experience rural life.",
   },
   {
     label: "Guest house",
-    icon: <GuestHouse />,
+    icon: BiSolidBuilding,
     description: "A cozy guest house, perfect for a relaxing stay.",
   },
   {
     label: "Hotel",
-    icon: <Hotel />,
+    icon: FaHotel,
     description: "A luxurious hotel, perfect for a pampering stay.",
   },
   {
     label: "Houseboat",
-    icon: <Houseboat />,
+    icon: MdHouseboat,
     description:
       "A unique houseboat stay, perfect for those who love the water.",
   },
@@ -154,74 +110,33 @@ export const categories = [
     description: "This property is brand new and luxurious!",
   },
   {
-    label: "Kezhan",
-    icon: <Kezhan />,
-    description:
-      "A traditional Chinese courtyard house, perfect for a cultural experience.",
-  },
-  {
-    label: "Minsu",
-    icon: <Minsu />,
-    description:
-      "A traditional Taiwanese homestay, perfect for a relaxing stay.",
-  },
-  {
-    label: "Riad",
-    icon: <Riad />,
-    description:
-      "A traditional Moroccan riad, perfect for a stylish and luxurious stay.",
-  },
-  {
-    label: "Ryokan",
-    icon: <Ryokan />,
-    description:
-      "A traditional Japanese ryokan, perfect for a cultural experience.",
-  },
-  {
-    label: "Shepherd's hut",
-    icon: <ShepherdHut />,
-    description: "A cozy shepherd's hut, perfect for a romantic getaway.",
-  },
-  {
     label: "Tent",
-    icon: <Tent />,
+    icon: GiCampingTent,
     description:
       "A camping experience, perfect for those who love the outdoors.",
   },
   {
     label: "Tiny home",
-    icon: <TinyHome />,
+    icon: FiHome,
     description:
       "A small but perfectly formed dwelling, perfect for minimalist travelers.",
   },
   {
     label: "Tower",
-    icon: <Tower />,
+    icon: GiWatchtower,
     description: "A unique and unforgettable stay in a towering structure.",
   },
   {
     label: "Tree house",
-    icon: <TreeHouse />,
+    icon: GiTreehouse,
     description:
       "A childhood dream come true, a cozy stay nestled among the branches.",
-  },
-  {
-    label: "Trullo",
-    icon: <Trullo />,
-    description:
-      "A traditional conical stone house, unique to the Puglia region of Italy.",
   },
   {
     label: "Windmill",
     icon: GiWindmill,
     description:
       "A charming and historic stay, with stunning views from the top.",
-  },
-  {
-    label: "Yurt",
-    icon: <Yurt />,
-    description:
-      "A traditional Mongolian dwelling, perfect for a glamping experience.",
   },
 ];
 
