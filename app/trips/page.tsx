@@ -7,10 +7,11 @@ import ClientOnly from "@/components/clientOnly";
 const TripsPage = async () => {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return;
-    <ClientOnly>
-      <EmptyState title="Unauthorized" subTitle="Please login" />;
-    </ClientOnly>;
+    return (
+      <ClientOnly>
+        <EmptyState title="Unauthorized" subTitle="Please login" />;
+      </ClientOnly>
+    );
   }
   const reservations = await getReservations({ userId: currentUser.id });
   if (reservations.length === 0) {
